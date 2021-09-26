@@ -1,3 +1,3 @@
 <?php
-    echo sprintf("Hello, Welcome to CloudBase!");
+    echo sprintf("Hello World!");
 ?>
