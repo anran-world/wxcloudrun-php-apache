@@ -6,3 +6,6 @@ COPY . /var/www/html/
 
 # 完成PHP初始化设置
 RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
+
+# 执行PHP启动命令
+CMD ["apachectl", "-DFOREGROUND"]
