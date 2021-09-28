@@ -1,15 +1,8 @@
-# Use the official PHP 7.3 image.
-# https://hub.docker.com/_/php
+# 选择基础镜像。如需更换，请到(https://hub.docker.com/_/php?tab=tags) 选择后替换后缀。
 FROM php:7.3-apache
 
-# Copy local code to the container image.
-COPY index.php /var/www/html/
+# 将当前目录下所有文件拷贝到工作目录中
+COPY . /var/www/html/
 
-# Use the PORT environment variable in Apache configuration files.
-RUN sed -i 's/80/8081/g' /etc/apache2/sites-available/000-default.conf /etc/apache2/ports.conf
-
-# Configure PHP for development.
-# Switch to the production php.ini for production operations.
-# RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
-# https://hub.docker.com/_/php#configuration
+# 完成PHP初始化设置
 RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
